@@ -42,6 +42,7 @@ Este repositorio contiene los archivos de configuración de qtile para un diseñ
       yay -S nerd-fonts-hack
 
 - [Git](https://wiki.archlinux.org/title/Git_(Espa%C3%B1ol))
+
       pacman -S git
 
 
