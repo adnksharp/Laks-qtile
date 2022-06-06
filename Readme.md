@@ -169,52 +169,52 @@ Contiene la configuración de los widgets de cada barra y los colores usados
 
 ### [theme](settings/Theme/theme.py)
 
-<div style="color: #000; height: 3vh;" > 
+<p style="color: #000" > 
 Color de fuentes 1: Foreground
-</div>
+</p>
 
-<div style="color: #aaa; height: 3vh;" >
+<p style="color: #aaa" >
 Color de fuentes 2: Foregroundi
-</div>
+</p>
 
-<div style="color: #808888; height: 3vh;" >
+<p style="color: #808888" >
 Color de fondo: Background
-</div>
+</p>
 
-<div style="color: #fff; height: 3vh;" >
+<p style="color: #fff" >
 Color neutro 1: BasicColor
-</div>
+</p>
 
-<div style="color: #97b1b6; height: 3vh;" >
+<p style="color: #97b1b6" >
 Color neutro 2: ActiveColor
-</div>
+</p>
 
-<div style="color: #3f575b; height: 3vh;" >
+<p style="color: #3f575b" >
 Color neutro 3: InactiveColor
-</div>
+</p>
 
-<div style="color: #e55a44; height: 3vh;" >
+<p style="color: #e55a44" >
 Color de alerta: UrgentColor
-</div>
+</p>
 
-<div style="color: #ef4abe; height: 3vh;" >
+<p style="color: #ef4abe" >
 Resaltado 1: RedColor
-</div>
-<div style="color: #d64aef; height: 3vh;" >
+</p>
+<p style="color: #d64aef" >
 Resaltado 2: PinkColor
-</div>
+</p>
 
-<div style="color: #4ab5ef; height: 3vh;" >
+<p style="color: #4ab5ef" >
 Resaltado 3: BlueColor
-</div>
+</p>
 
-<div style="color: #63fdd6; height: 3vh;" >
+<p style="color: #63fdd6" >
 Resaltado 4: TealColor
-</div>
+</p>
 
-<div style="color: #f7c931; height: 3vh;" >
+<p style="color: #f7c931" >
 Resaltado 5: AmberColor
-</div>
+</p>
 
 
 ### [widgets](settings/Theme/widgets.py)
