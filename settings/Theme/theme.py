@@ -10,6 +10,7 @@ UrgentColor = '#e55a44'
 
 RedColor = "#ef4a5a"
 PinkColor = "#ec4aef"
-BlueColor = "#4ab3ef"   
+BlueColor = "#4cc1c9" 
+PurpleColor = "#3e9ea5"   
 TealColor = "#62fcc9"
 AmberColor = "#fcc920"

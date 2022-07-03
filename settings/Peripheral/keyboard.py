@@ -62,7 +62,7 @@ keys = [ Key ( key [ 0 ], key [ 1 ], *key [ 2: ] ) for key in [
     # Lanzar aplicaciones
     ( [ meta ], 'w', lazy.spawn ( 'vivaldi-stable' ) ),
     ( [ meta ], 'v', lazy.spawn ( 'pavucontrol' ) ),
-    ( [ meta ], 'z', lazy.spawn ( 'brave' ) ),
+    ( [ meta ], 'z', lazy.spawn ( 'brave-dev' ) ),
     ( [ meta ], 't', lazy.spawn ( 'pcmanfm' ) ),
     ( [ meta ], 'n', lazy.spawn ( 'teams-for-linux' ) ),
     ( [ meta ], 's', lazy.spawn ( 'code' ) ),
@@ -82,17 +82,17 @@ keys = [ Key ( key [ 0 ], key [ 1 ], *key [ 2: ] ) for key in [
 
     # Capturar pantalla
     ( [ meta, alt ], 'c', lazy.spawn ( 'scrot Capturas/K.jpg' ) ),
-    ( [ meta, alt ], 'r', lazy.spawn ( 'delay 5; scrot Capturas/K.jpg' ) ),
+    ( [ meta, alt ], 'r', lazy.spawn ( 'scrot -d 10 Capturas/K.jpg' ) ),
     ( [ meta, alt ], 'l', lazy.spawn ( 'scrot -s Capturas/K.jpg' ) ),
 
     # Abrir urls
-    ( [ meta, control ], 'w', lazy.spawn ( '/usr/bin/brave --app=https://www.twitch.tv' ) ),
-    ( [ meta, control ], 'v', lazy.spawn ( '/usr/bin/brave --app=https://open.spotify.com' ) ),
-    ( [ meta, control ], 'z', lazy.spawn ( '/usr/bin/brave --app=https://www.youtube.com' ) ),
-    ( [ meta, control ], 't', lazy.spawn ( '/usr/bin/brave --app=https://twitter.com/' ) ),
-    ( [ meta, control ], 'n', lazy.spawn ( '/usr/bin/brave --app=https://www.facebook.com/' ) ),
-    ( [ meta, control ], 's', lazy.spawn ( '/usr/bin/brave --app=https://www.instagram.com/' ) ),
-    ( [ meta, control ], 'c', lazy.spawn ( '/usr/bin/brave --app=https://web.whatsapp.com/' ) ),
-    ( [ meta, control ], 'r', lazy.spawn ( '/usr/bin/brave --app=https://www.reddit.com/' ) ),
-    ( [ meta, control ], 'l', lazy.spawn ( '/usr/bin/brave --app=https://translate.google.com/' ) ),
+    ( [ meta, control ], 'w', lazy.spawn ( 'brave-dev --app=https://www.twitch.tv' ) ),
+    ( [ meta, control ], 'v', lazy.spawn ( 'brave-dev --app=https://open.spotify.com' ) ),
+    ( [ meta, control ], 'z', lazy.spawn ( 'brave-dev --app=https://www.youtube.com' ) ),
+    ( [ meta, control ], 't', lazy.spawn ( 'brave-dev --app=https://twitter.com/' ) ),
+    ( [ meta, control ], 'n', lazy.spawn ( 'brave-dev --app=https://www.facebook.com/' ) ),
+    ( [ meta, control ], 's', lazy.spawn ( 'brave-dev --app=https://www.instagram.com/' ) ),
+    ( [ meta, control ], 'c', lazy.spawn ( 'brave-dev --app=https://web.whatsapp.com/' ) ),
+    ( [ meta, control ], 'r', lazy.spawn ( 'brave-dev --app=https://www.reddit.com/' ) ),
+    ( [ meta, control ], 'l', lazy.spawn ( 'brave-dev --app=https://translate.google.com/' ) ),
 ]]
