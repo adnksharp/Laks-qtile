@@ -7,6 +7,7 @@ Mis archivos de configuración de qtile para un diseño de teclado dvorak y pref
 ## Paquetes recomendados
 
 - [Picom](https://wiki.archlinux.org/title/Picom)
+- [python-psutil](https://archlinux.org/packages/community/x86_64/python-psutil/)
 
 # Archivos
 
