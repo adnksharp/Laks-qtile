@@ -1,51 +1,12 @@
-# Dotfiles
-Este repositorio contiene los archivos de configuración de qtile para un diseño de teclado dvorak y preferiblemente para dos monitores.
+# Mi configuracion de Qtile
 
-[![qtile.png](https://i.postimg.cc/kg6JgSBS/qtile.png)](https://postimg.cc/G4RwMHP3)
+![K-045.jpg](https://i.postimg.cc/K8qXCpR8/K-045.jpg)
 
-# Índice
-- [Requisitos](#Requisitos) 
-- [Archivos](#Archivos) 
-  - [config](#config) 
-  - [autostart](#autostart) 
-  - settings
-      - [Peripheral](#Peripheral)
-        - [keyboard](#keyboard)  
-        - [desktop](#desktop) 
-        - [mouse](#mouse) 
-     - [Process](#Process) 
-        - [layouts](#layouts) 
-        - [screens](#screens) 
-        - [path](#path) 
-      - [Theme](#Theme) 
-        - [theme](#theme) 
-        - [widgets](#widgets) 
-- [Aplicaciones que uso](#Aplicaciones-que-uso)
+Mis archivos de configuración de qtile para un diseño de teclado dvorak y preferiblemente para dos monitores.
 
-
-# Requisitos
-
-- [Qtile](https://wiki.archlinux.org/title/Qtile)
-
-      pacman -S qtile
+## Paquetes recomendados
 
 - [Picom](https://wiki.archlinux.org/title/Picom)
-
-      pacman -S picom
-
-- [Rofi](https://wiki.archlinux.org/title/Rofi)
-
-      pacman -S picom
-
-- [Nerd Fonts](https://www.nerdfonts.com)
-
-      yay -S nerd-fonts-hack
-
-- [Git](https://wiki.archlinux.org/title/Git_(Espa%C3%B1ol))
-
-      pacman -S git
-
-
 
 # Archivos
 
@@ -87,6 +48,7 @@ La configuracion de teclas esta diseñada para una distribucion de teclado dvora
 
 |        | Atajo         | Acción |
 |--------|---------------|--------|
+| [1-8]  | [1-8]         | Cambia el foco al grupo indicado |
 | O      | O             | Cambia a la ventana inferior                    |
 | ,      | Comma         | Cambia a la ventana superior                    |
 | A      | A             | Cambia a la ventana derecha                     |
@@ -126,6 +88,7 @@ La configuracion de teclas esta diseñada para una distribucion de teclado dvora
 
 |        | Atajo         | Acción |
 |--------|---------------|--------|
+| [1-8]  | [1-8]         | Cambia al grupo indicado y el fondo de pantalla |
 | O      | O             | Cambia el tamaño de la ventana                  |
 | ,      | Comma         | Cambia el tamaño de la ventana                  |
 | A      | A             | Cambia el tamaño de la ventana                  |
@@ -135,6 +98,11 @@ La configuracion de teclas esta diseñada para una distribucion de teclado dvora
 | T, N, S| T, N, S       | Abre URLs desde el navegador                    | 
 | C, R, L| C, R, L       | Abre URLs desde el navegador                    |
 
+#### Meta + Shift
+|        | Atajo         | Acción |
+|--------|---------------|--------|
+| [1-8]  | [1-8]         | Cambia la ventana al grupo indicado |
+
 #### Control + Escape
 Muestra las ventanas abiertas
 
@@ -142,12 +110,10 @@ Muestra las ventanas abiertas
 Deactiva el apagado de pantalla por inactividad
 
 #### F4
-Apaga las pantallaS
+Apaga las pantallas
 
 ### [desktop](settings/Peripheral/desktop.py)
-definen los grupos enumerados con iconos de **Nerd Fonts** y las teclas:
-- **meta + [1-8]** para navegar entre grupos.
-- **meta + shift + [1-8]** para mover ventanas a otros grupos.
+definen los grupos enumerados con iconos de **Nerd Fonts** y los atajos para cambiar entre ellos.
 
 ### [mouse](settings/Peripheral/mouse.py)
 Define las teclas del mouse para mover ventas flotantes y redimensionarlas
@@ -170,52 +136,55 @@ Contiene la configuración de los widgets de cada barra y los colores usados
 ### [theme](settings/Theme/theme.py)
 
 <p style="color: #000" > 
-Color de fuentes 1: Foreground
+Color de fuentes 1: Foreground | #000
 </p>
 
 <p style="color: #aaa" >
-Color de fuentes 2: Foregroundi
+Color de fuentes 2: Foregroundi | #aaa
 </p>
 
 <p style="color: #808888" >
-Color de fondo: Background
+Color de fondo: Background | #808888
 </p>
 
 <p style="color: #fff" >
-Color neutro 1: BasicColor
+Color neutro 1: BasicColor | #fff
 </p>
 
 <p style="color: #97b1b6" >
-Color neutro 2: ActiveColor
+Color neutro 2: ActiveColor | #97b1b6
 </p>
 
 <p style="color: #3f575b" >
-Color neutro 3: InactiveColor
+Color neutro 3: InactiveColor | #3f575b
 </p>
 
 <p style="color: #e55a44" >
-Color de alerta: UrgentColor
+Color de alerta: UrgentColor | #e55a44
 </p>
 
 <p style="color: #ef4abe" >
-Resaltado 1: RedColor
+Resaltado 1: RedColor | #ef4abe
 </p>
-<p style="color: #d64aef" >
-Resaltado 2: PinkColor
-</p>
-
-<p style="color: #4ab5ef" >
-Resaltado 3: BlueColor
+<p style="color: #ec4aef" >
+Resaltado 2: PinkColor | #ec4aef
 </p>
 
-<p style="color: #63fdd6" >
-Resaltado 4: TealColor
+<p style="color: #4cc1c9" >
+Resaltado 3: BlueColor | #4cc1c9
 </p>
 
-<p style="color: #f7c931" >
-Resaltado 5: AmberColor
+<p style="color: #3e9ea5" >
+Resaltado 4: PurpleColor | #3e9ea5
 </p>
 
+<p style="color: #62fcc9" >
+Resaltado 4: TealColor | #62fcc9
+</p>
+
+<p style="color: #fcc920" >
+Resaltado 5: AmberColor | #fcc920
+</p>
 
 ### [widgets](settings/Theme/widgets.py)
 Los elementos que se muestran en la barra de cada pantalla estan agrupados segun la pantalla en que son utilizados
@@ -237,99 +206,3 @@ Los elementos que se muestran en la barra de cada pantalla estan agrupados segun
 - Monitor de uso de memoria RAM
 - Forma en la que se muestan las ventanas: [Columnas, Max, Zoomy o floatantes](http://docs.qtile.org/en/latest/manual/ref/layouts.html)
 - Fecha
-
-# Aplicaciones que uso
-
-## Terminal 
-
-- [alacritty](https://wiki.archlinux.org/title/Alacritty#Configuration)
-    
-      pacman -S alacritty
-
-- [tilix](https://github.com/gnunn1/tilix)
-
-      pacman -S tilix
-
-## Editores de texto
-
-- [nvim](https://wiki.archlinux.org/title/Neovim)
-      
-      pacman -S neovim
-
-- [visual-studio-code]()
-
-      yay -S visual-studio-code-bin
-
-## Gestores de archivos
-
-- [pcmanfm]()
-
-      pacman -S pcmanfm
-- [ranger]()
-
-      pacman -S ranger
-
-## Navegadores
-
-- [vivaldi](https://wiki.archlinux.org/title/Vivaldi)
-      
-      pacman -S vivaldi
-
-- [brave](https://aur.archlinux.org/packages/brave-bin)
-
-      yay -S brave-bin
-
-## Controlador de volumen
-
-- [pavucontrol](https://wiki.archlinux.org/title/PulseAudio)
-
-      pacman -S pavucontrol
-
-## Gestor de contraseñas
-
-- [seahorse](https://wiki.archlinux.org/title/GNOME_(Espa%C3%B1ol)/Keyring_(Espa%C3%B1ol)#Claves_SSH)
-      
-      pacman -S seahorse gnome-keiring
-
-## Oficina 
-
-- [libreoffice](https://wiki.archlinux.org/title/LibreOffice_(Espa%C3%B1ol))
-            
-      pacman -S libreoffice-fresh libreoffice-fresh-es languajetool hunspell hunspell-es 
-
-- [teams-for-linux](https://aur.archlinux.org/packages/teams-for-linux)
-
-      yay -S teams-for-linux
-
-- [notable](https://aur.archlinux.org/packages/notable-bin)
-
-      yay -S notable
-
-- [zathura](https://wiki.archlinux.org/title/Zathura)
-
-      yay -S zathura zathura-pdf-poppler zathura-cb zathura-ps
-
-## Extras
-
-- [neofetch](https://wiki.archlinux.org/title/List_of_applications_(Espa%C3%B1ol)/Utilities_(Espa%C3%B1ol))
-
-      pacman -S neofetch
-
-- [cava](https://aur.archlinux.org/packages/cava)
-      
-      yay -S cava
-
-- [gotop](https://aur.archlinux.org/packages/gotop)
-
-      yay -S gotop
-
-- [zsh](https://wiki.archlinux.org/title/Zsh_(Espa%C3%B1ol))
-
-      pacman -S zsh
-      sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-
-- [yay](https://aur.archlinux.org/packages/yay)
-
-      git clone https://aur.archlinux.org/yay-bin.git
-      cd yay-bin
-      makepkg -si
