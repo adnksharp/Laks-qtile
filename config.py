@@ -1,19 +1,9 @@
-from libqtile import hook
-from libqtile import qtile
-from settings.Peripheral.keyboard import meta, keys
-from settings.Peripheral.desktop import groups
-from settings.Process.layouts import layouts, floating_layout
-from settings.Theme.widgets import widgetDefaults, extensionDefaults
-from settings.Process.screens import screens
-from settings.Peripheral.mouse import mouse
-from settings.Process.path import qtile_path
-from os import path
-import subprocess
+from src.inputs import keys, mouse, groups
+from src.layouts import layouts, floating_layout
+from src.widgets import screens, extension_defaults
+from src.scripts import *
 
-# Ejecutar autostart.sh
-@hook.subscribe.startup_once
-def autostart ( ):
-    subprocess.call ( [ path.join ( qtile_path, 'autostart.sh' ) ] )
+first()
 
 main = None
 dgroups_key_binder = None
@@ -24,4 +14,4 @@ cursor_warp = True
 auto_fullscreen = True
 auto_minimize = True
 focus_on_window_activation = 'smart'
-wmname = 'LG3D'
+wmname = "LG3D"
