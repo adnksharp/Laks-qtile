@@ -34,8 +34,10 @@ floating_layout = layout.Floating(
         Match(wm_class='splash'),
         Match(wm_class='toolbar'),
         Match(title='Control de volumen'),
+        Match(title='Personalizar apariencia y comportamiento'),
         Match(title='Brave'),
         Match(title='Picture-in-Picture'),
         Match(title='Pantalla en Pantalla'),
+        Match(title='Android Emulator - AKDroid-33:5554'),
     ],
 )
