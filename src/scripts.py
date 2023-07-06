@@ -14,7 +14,7 @@ def wallpaper():
     return feh
 
 def first():
-    sh = 'alacritty & picom & onedrive --monitor --confdir ~/.config/onedrive & ' + wallpaper()
+    sh = 'dunst & alacritty & picom & onedrive --monitor --confdir ~/.config/onedrive & ' + wallpaper()
     subprocess.run(sh, shell=True)
 
 def set_wallpaper():
