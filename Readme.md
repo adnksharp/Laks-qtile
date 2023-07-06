@@ -8,7 +8,7 @@ Mis archivos de configuración de qtile para una distribución de teclado dvorak
 
 |[Alsa utils](https://archlinux.org/packages/extra/x86_64/alsa-utils/)|[python setproctitle](https://archlinux.org/packages/extra/x86_64/python-setproctitle/)|[ttf-nerd-fonts-symbols](https://archlinux.org/packages/extra/any/ttf-nerd-fonts-symbols/)|
 |--|--|--|
-|[libpulse](https://archlinux.org/packages/extra/x86_64/libpulse/)|[python dbus next](https://archlinux.org/packages/extra/any/python-dbus-next/)|[ttf-hack](https://archlinux.org/packages/extra/any/ttf-hack/)|
+|[libpulse](https://archlinux.org/packages/extra/x86_64/libpulse/)|[apple fonts](https://developer.apple.com/fonts/)|[ttf-hack](https://archlinux.org/packages/extra/any/ttf-hack/)|
 |[Picom](https://wiki.archlinux.org/title/Picom)|[playerctl](https://archlinux.org/packages/extra/x86_64/playerctl/)|[alacritty](https://github.com/adnksharp/Laks-alacritty)
 
 ### "Scripts"
