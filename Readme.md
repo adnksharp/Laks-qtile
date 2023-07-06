@@ -1,209 +1,137 @@
-# Mi configuracion de Qtile
+# Qtile config
 
-![K-045.jpg](https://i.postimg.cc/K8qXCpR8/K-045.jpg)
+![2023-07-05-13-28.png](https://i.postimg.cc/t4fFdxJp/2023-07-05-17-23.png)
 
-Mis archivos de configuración de qtile para un diseño de teclado dvorak y preferiblemente para dos monitores.
+Mis archivos de configuración de qtile para una distribución de teclado dvorak.
 
-## Paquetes recomendados
+#### Paquetes recomendados
 
-- [Picom](https://wiki.archlinux.org/title/Picom)
-- [python-psutil](https://archlinux.org/packages/community/x86_64/python-psutil/)
+|[Alsa utils](https://archlinux.org/packages/extra/x86_64/alsa-utils/)|[python setproctitle](https://archlinux.org/packages/extra/x86_64/python-setproctitle/)|[ttf-nerd-fonts-symbols](https://archlinux.org/packages/extra/any/ttf-nerd-fonts-symbols/)|
+|--|--|--|
+|[libpulse](https://archlinux.org/packages/extra/x86_64/libpulse/)|[python dbus next](https://archlinux.org/packages/extra/any/python-dbus-next/)|[ttf-hack](https://archlinux.org/packages/extra/any/ttf-hack/)|
+|[Picom](https://wiki.archlinux.org/title/Picom)|[playerctl](https://archlinux.org/packages/extra/x86_64/playerctl/)|[alacritty](https://github.com/adnksharp/Laks-alacritty)
 
-# Archivos
+### "Scripts"
+Aplicaciones lanzadas al inicio e instrucciones para definir el fondo de pantalla de cada escritorio virtual.
 
-    .config
-    └──qtile
-        ├── autostart.sh
-        ├── config.py
-        └── settings
-            ├── __init__.py
-            ├── Peripheral
-            │   ├── desktop.py
-            │   ├── keyboard.py
-            │   ├── mouse.py
-            ├── Process
-            │   ├── layouts.py
-            │   ├── path.py
-            │   └── screens.py
-            └── Theme
-                ├── theme.py
-                └── widgets.py
+### [Distribución de ventanas](https://qtile.readthedocs.io/en/stable/manual/ref/layouts.html)
 
-### [config](config.py)
-Es el archivo que ejecuta qtile, el cual se dividió en módulos alojados en la carpeta [settings](settings/), los cuales se importan con la instrucción **import**.
+#### Columnas
+Bordes: `0`
 
-### [autostart](autostart.sh)
-Ejecuta instrucciones en bash para:
-- Definir la distribucion de teclado en **dvorak**
-- Iniciar picom y la terminal 
-- Definir un fondo de pantalla con [feh](https://wiki.archlinux.org/title/Feh#Set_the_wallpaper)
-- Deshabilitar el apagado automático de la pantalla
-- Configurar la resolución de las pantallas conectadas con [xrandr](https://wiki.archlinux.org/title/Xrandr)
-# Peripheral
-Contiene configuraciones para el mouse, teclado y escritorios virtuales (grupos).
+Margenes: `6`
 
-### [keyboard](settings/Peripheral/keyboard.py)
-La configuracion de teclas esta diseñada para una distribucion de teclado dvorak y clasificado segun las teclas especiales usadas:
+#### Flotantes
+Bordes: `0`
 
-#### Meta 
+Tipos de pantallallas flotantes por defecto: 
+| confirmreset | makebranch    | toolbar | dialog |
+|--|--|--|--|
+| notification | download      | maketag | splash |
+| ssh-askpass  | file_progress | confirm | error  |
 
-|        | Atajo         | Acción |
-|--------|---------------|--------|
-| [1-8]  | [1-8]         | Cambia el foco al grupo indicado |
-| O      | O             | Cambia a la ventana inferior                    |
-| ,      | Comma         | Cambia a la ventana superior                    |
-| A      | A             | Cambia a la ventana derecha                     |
-| E      | E             | Cambia a la ventana izquierda                   |
-| Esc    | Escape        | Hace/Deshace una ventana flotante               |
-| Q      | Q             | Cierra una ventana                              |
-| '      | Apostrofe     | Cambia al grupo del monitor anterior            |
-| .      | Punto         | Cambia al grupo del siguiente monitor           |
-| Tab    | Tabulador     | Cambia la forma en que se muestran las ventanas |
-| ;      | Punto y coma  | Lanza el menú de aplicaciones                   |
-|        | Espacio       | Cambia la distribucion de teclado               |
-| Enter  | Enter         | Lanza la terminal de Alacritty                  |
-| W, V, Z| W, V, Z       | Abre aplicaciones                               |
-| T, N, S| T, N, S       | Abre aplicaciones                               | 
-| C, R, L| C, R, L       | Abre aplicaciones                               |
+#### Maximizado
+Configuración original
 
-#### Meta + Alt
+### [Widgets](https://qtile.readthedocs.io/en/stable/manual/ref/widgets.html)
+Widgets configurados para la barra de la pantalla principal
+#### Izquierda
+Nombre de la ventana
 
-|        | Atajo         | Acción |
-|--------|---------------|--------|
-| O      | O             | Mueve la ventana a la parte inferior            |
-| ,      | Comma         | Mueve la ventana a la parte superior            |
-| A      | A             | Mueve la ventana a la parte derecha             |
-| E      | E             | Mueve la ventana a la parte izquierda           |
-| Tab    | Tabulador     | Cambia la forma en que se muestran las ventanas |
-| W      | W             | Di-sminuye el volumen de salida                 |
-| V      | V             | Silencia/Activa la salida de audio              | 
-| Z      | Z             | Aumenta el volumen de salida                    |
-| T      | T             | Regresa al elemento de reproduccion antearior   |
-| N      | N             | Pausa/Reproduce el elemento de reproduccion     | 
-| S      | S             | Cambia al elemento de reproduccion siguiente    |
-| C      | C             | Toma una captura de pantalla                    |
-| R      | R             | Toma una captura de pantalla despues de 5s      | 
-| L      | L             | Toma una captura de una region seleccionada     |
+#### Centro
+Hora
+CMD
 
-#### Meta + Control
+#### Derecha
+##### Iconos de aplicaciones
 
-|        | Atajo         | Acción |
-|--------|---------------|--------|
-| [1-8]  | [1-8]         | Cambia al grupo indicado y el fondo de pantalla |
-| O      | O             | Cambia el tamaño de la ventana                  |
-| ,      | Comma         | Cambia el tamaño de la ventana                  |
-| A      | A             | Cambia el tamaño de la ventana                  |
-| E      | E             | Cambia el tamaño de la ventana                  |
-| Esc    | Escape        | Reinicia Qtile                                  |
-| W, V, Z| W, V, Z       | Abre URLs desde el navegador                    |
-| T, N, S| T, N, S       | Abre URLs desde el navegador                    | 
-| C, R, L| C, R, L       | Abre URLs desde el navegador                    |
+##### Volumen
+Widget PulseVolume con funciónes de mouse desactivadas y cambios de volumen de 5%.
 
-#### Meta + Shift
-|        | Atajo         | Acción |
-|--------|---------------|--------|
-| [1-8]  | [1-8]         | Cambia la ventana al grupo indicado |
+##### Estado de la batería
+Uso de [nerd fonts icons](https://www.nerdfonts.com/cheat-sheet) para mostrar el estado de la batería.
 
-#### Control + Escape
-Muestra las ventanas abiertas
+##### Distribución del teclado
+Uso de [nerd fonts icons](https://www.nerdfonts.com/cheat-sheet) para mostrar la distribución de teclado usando iconos 
+|latam dvorak|`󰅣`|
+|------------|---|
+|us dvorak   |``|
+|us qwerty   |`󰸊`|
 
-#### F3 
-Deactiva el apagado de pantalla por inactividad
+##### Distribución actual de ventanas
+Muestra la primer letra de la distribución de ventanas usada
 
-#### F4
-Apaga las pantallas
+|c|columns |
+|-|--------|
+|m|max     |
+|f|floating|
 
-### [desktop](settings/Peripheral/desktop.py)
-definen los grupos enumerados con iconos de **Nerd Fonts** y los atajos para cambiar entre ellos.
+### [Shortcuts](https://qtile.readthedocs.io/en/stable/manual/config/keys.html)
+#### Teclado
+##### Foco
+|`meta`|`arriba`, `abajo`, `derecha` ó `izquierda`|Cambiar foco entre ventanas|
+|--|--|--|
+|`meta`+`control`|`izquierda`|cambiar el foco al grupo de ventanas del escritorio virtual anterior|
+|`meta`+`control`|`derecha`|cambiar el foco al grupo de ventanas del escritorio virtual siguiente|
+|`alt`|`Tab`|foco a la siguiente ventana|
 
-### [mouse](settings/Peripheral/mouse.py)
-Define las teclas del mouse para mover ventas flotantes y redimensionarlas
+##### Navegación
+|`meta`+`alt`|`arriba`, `abajo`, `derecha` ó `izquierda`|mover ventana de posición|
+|--|--|--|
+|`meta`+`alt`|`Tab`|alternar maximizado vertical|
+|`meta`|`Tab`|cambiar distribución de ventanas|
 
-## Process
-Lee los monitores conectados, define las barras para cada pantalla y el acceso a la rapeta de configuarcion de qtile (~/.config/qtile)
+##### Edición 
+|`meta`+`shift`|`arriba`, `abajo`, `derecha` ó `izquierda`|Cambiar tamaño de la ventana|
+|--|--|--|
+|`meta`|`Escape`|Alternar tipo de ventana flotante|
 
-### [layouts](settings/Process/layouts.py)
-Define la forma en que se pueden mostrar las ventanas y el tamaño de los bordes
+##### Utilidades
+|`meta`|`espacio`|cambiar distribución de teclado|
+|--|--|--|
+|`meta`+`alt`|`F4`|cerrar sesión|
+|`meta`|`q`|cerrar ventana|
+|``|`F4`|apagar pantalla|
 
-### [screens](settings/Process/screens.py)
-Lee la cantidad de ventanas conectadas y la barra para cada una de estas
+##### Terminal
+|`meta`|`enter`|Lanzar terminal|
+|--|--|--|
+|`meta`|`a`|Lanzar cmd prompt|
 
-### [path](settings/Process/path.py)
-Permite al archivo config trabajar con el archivo autostart tomando como base la carpeta [~/.config/qtile]()
+##### Extras
+|`meta`|`Insert`|alternar silenciado de la salida de audio|
+|--|--|--|
+|`meta`|`Delete`|alternar pausado de contenido multimedia|
+|`meta`|`Home`|cambiar al siguiente elemento multimedia|
+|`meta`|`End`|cambiar al elemento multimedia anterior|
+|`meta`|`Prior`|aumentar el volumen de salida un 5%|
+|`meta`|`next`|disminuir el volumen de salida un 5%|
 
-## Theme
-Contiene la configuración de los widgets de cada barra y los colores usados
+#### Mouse
+|`meta`|`Click derecho`|Cambiar el tamaño de una ventana flotante|
+|-|-|-|
+|`meta`|`Click izquierdo`|Mover una ventana flotante|
 
-### [theme](settings/Theme/theme.py)
-
-<p style="color: #000" > 
-Color de fuentes 1: Foreground | #000
-</p>
-
-<p style="color: #aaa" >
-Color de fuentes 2: Foregroundi | #aaa
-</p>
-
-<p style="color: #808888" >
-Color de fondo: Background | #808888
-</p>
-
-<p style="color: #fff" >
-Color neutro 1: BasicColor | #fff
-</p>
-
-<p style="color: #97b1b6" >
-Color neutro 2: ActiveColor | #97b1b6
-</p>
-
-<p style="color: #3f575b" >
-Color neutro 3: InactiveColor | #3f575b
-</p>
-
-<p style="color: #e55a44" >
-Color de alerta: UrgentColor | #e55a44
-</p>
-
-<p style="color: #ef4abe" >
-Resaltado 1: RedColor | #ef4abe
-</p>
-<p style="color: #ec4aef" >
-Resaltado 2: PinkColor | #ec4aef
-</p>
-
-<p style="color: #4cc1c9" >
-Resaltado 3: BlueColor | #4cc1c9
-</p>
-
-<p style="color: #3e9ea5" >
-Resaltado 4: PurpleColor | #3e9ea5
-</p>
-
-<p style="color: #62fcc9" >
-Resaltado 4: TealColor | #62fcc9
-</p>
-
-<p style="color: #fcc920" >
-Resaltado 5: AmberColor | #fcc920
-</p>
-
-### [widgets](settings/Theme/widgets.py)
-Los elementos que se muestran en la barra de cada pantalla estan agrupados segun la pantalla en que son utilizados
-
-#### Pantalla principal
-
-- Grupos
-- Nombre de la ventana
-- Control de volumen
-- Monitor de uso de CPU
-- Forma en la que se muestan las ventanas: [Columnas, Max, Zoomy o floatantes](http://docs.qtile.org/en/latest/manual/ref/layouts.html)
-- Hora
-
-#### Pantalla secundaria
-
-- Nombre de la ventana
-- Iconos del sistema
-- Distribucion de teclado usada
-- Monitor de uso de memoria RAM
-- Forma en la que se muestan las ventanas: [Columnas, Max, Zoomy o floatantes](http://docs.qtile.org/en/latest/manual/ref/layouts.html)
-- Fecha
+### Fondos de pantalla
+|[![](https://c4.wallpaperflare.com/wallpaper/912/196/835/abstract-3d-black-wallpaper-preview.jpg)](https://www.wallpaperflare.com/black-graphic-art-abstract-3d-technology-futuristic-illustration-wallpaper-ggi/download)|[![](https://images.pling.com/img/00/00/62/10/98/1594233/fb84092cf17aa09421cfc7dfe58f4dda2d7f83fa4e9db569756615a4138b53c066b7.jpg)](https://store.kde.org/p/1594233/)|[![](https://e1.pxfuel.com/desktop-wallpaper/300/464/desktop-wallpaper-bold-and-brash-2020-meme.jpg)](https://www.pxfuel.com/es/desktop-wallpaper-fgqvx)|[![](https://c4.wallpaperflare.com/wallpaper/42/522/438/3d-3d-abstract-abstract-neon-glow-wallpaper-preview.jpg)](https://www.wallpaperflare.com/3d-3d-abstract-neon-glow-teal-technology-architecture-wallpaper-mvvfh/download)|[![](https://c4.wallpaperflare.com/wallpaper/533/953/107/simple-background-simple-artwork-digital-art-wallpaper-preview.jpg)](https://www.wallpaperflare.com/simple-background-artwork-digital-art-wrinkles-abstract-wallpaper-pvdip/download)|[![](https://images.pling.com/img/00/00/51/96/75/1416381/dac751c6812c5c51222f6b85a1706e3d483f2ee114875c77611ec5ec6bd0d03d6fda.jpg)](https://www.gnome-look.org/p/1416381/)|[![](https://c4.wallpaperflare.com/wallpaper/620/659/651/abstract-circle-black-background-minimalism-wallpaper-preview.jpg)](https://www.wallpaperflare.com/round-white-and-black-graphics-abstract-circle-black-background-wallpaper-pclfs/download)|[![](https://c4.wallpaperflare.com/wallpaper/95/588/10/abstract-abstraction-art-artistic-wallpaper-preview.jpg)](https://www.wallpaperflare.com/abstract-abstraction-art-artistic-artwork-fantasy-original-wallpaper-uwctx/download/3072x768)|[![](https://c4.wallpaperflare.com/wallpaper/148/196/849/artwork-shattered-shapes-abstract-wallpaper-preview.jpg)](https://www.wallpaperflare.com/artwork-shattered-shapes-abstract-digital-art-multiple-display-wallpaper-uoqmv/download)|[![](https://c4.wallpaperflare.com/wallpaper/162/53/313/digital-art-simple-white-background-abstract-wallpaper-preview.jpg)](https://www.wallpaperflare.com/black-block-wallpaper-digital-art-simple-white-background-wallpaper-hhjv/download)|
+|-|-|-|-|-|-|-|-|-|-|
+|[![](https://c4.wallpaperflare.com/wallpaper/359/992/935/android-4k-original-stock-wallpaper-preview.jpg)](https://www.wallpaperflare.com/android-4k-original-stock-hd-abstract-studio-shot-black-background-wallpaper-pkshz/download)|[![](https://c4.wallpaperflare.com/wallpaper/427/414/423/abstract-black-low-poly-wallpaper-preview.jpg)](https://www.wallpaperflare.com/abstract-black-low-poly-desktop-2880-x-1800-wallpaper-uxleg/download)|[![](https://c4.wallpaperflare.com/wallpaper/13/249/300/3d-shapes-colorful-abstract-wallpaper-preview.jpg)](https://www.wallpaperflare.com/3d-shapes-colorful-abstract-red-thing-artwork-digital-art-wallpaper-urdbs/download)|[![](https://c1.wallpaperflare.com/preview/299/667/718/texture-concrete-gritty-background.jpg)](https://www.wallpaperflare.com/brown-and-gray-abstract-painting-texture-concrete-gritty-background-wallpaper-zuvpo/download)|[![](https://c4.wallpaperflare.com/wallpaper/395/307/780/dunes-4k-mac-background-wallpaper-preview.jpg)](https://www.wallpaperflare.com/dunes-4k-mac-background-wallpaper-teplo/download)|[![](https://c4.wallpaperflare.com/wallpaper/30/386/470/digital-art-3d-cgi-render-abstract-simple-background-minimalism-geometry-triangle-black-background-wallpaper-preview.jpg)](https://www.wallpaperflare.com/digital-art-3d-cgi-render-abstract-simple-background-minimalism-geometry-triangle-black-background-wallpaper-tmbqa/download)|[![](https://c4.wallpaperflare.com/wallpaper/492/868/1022/render-wireframe-abstract-digital-art-wallpaper-preview.jpg)](https://www.wallpaperflare.com/render-wireframe-abstract-digital-art-artwork-low-poly-wallpaper-urfyv/download)|[![](https://c4.wallpaperflare.com/wallpaper/141/880/926/digital-art-facets-gradient-geometry-wallpaper-preview.jpg)](https://www.wallpaperflare.com/digital-art-facets-gradient-geometry-render-abstract-justin-maller-wallpaper-szpdt/download)|[![](https://c4.wallpaperflare.com/wallpaper/510/682/484/hexagon-abstract-hd-4k-wallpaper-preview.jpg)](https://www.wallpaperflare.com/hexagon-abstract-hd-4k-geometric-shape-no-people-large-group-of-objects-wallpaper-hrbbe/download)|[![](https://w0.peakpx.com/wallpaper/689/268/HD-wallpaper-related-abstract-digital-art-sci-fi-technology-cool-abstract-science.jpg)](https://www.peakpx.com/es/hd-wallpaper-desktop-ergas)|
+|[![](https://c4.wallpaperflare.com/wallpaper/991/525/300/digital-art-minimalism-gray-background-sphere-low-poly-3d-geometry-monochrome-wallpaper-preview.jpg)](https://www.wallpaperflare.com/digital-art-minimalism-gray-background-sphere-low-poly-3d-geometry-monochrome-wallpaper-hkfnq/download)|[![](https://c4.wallpaperflare.com/wallpaper/422/242/553/grey-geometry-triangle-clouds-wallpaper-preview.jpg)](https://www.wallpaperflare.com/grey-geometry-triangle-clouds-gray-background-degrade-wallpaper-uevin/download)|[![](https://c4.wallpaperflare.com/wallpaper/249/800/56/low-poly-abstract-blue-digital-art-artwork-geometry-wallpaper-preview.jpg)](https://www.wallpaperflare.com/low-poly-abstract-blue-digital-art-artwork-geometry-backgrounds-wallpaper-hltpd/download)|[![](https://c4.wallpaperflare.com/wallpaper/858/577/307/black-black-desktop-hd-wallpaper-preview.jpg)](https://www.wallpaperflare.com/black-black-desktop-wallpaper-yttgg/download)|[![](https://c4.wallpaperflare.com/wallpaper/578/493/137/geometry-poly-vector-dots-wallpaper-preview.jpg)](https://www.wallpaperflare.com/geometric-digital-wallpaper-geometry-poly-vector-dots-abstract-wallpaper-qebz/download)|[![](https://i.blogs.es/2e7900/img19_1920x1200/1366_2000.webp)](https://mega.nz/file/fvBGzRTb#NN5-X4eqP8JlC7LtG58NDkttsz_JkzFOaFrWJi2crFg)|
+[![](https://c4.wallpaperflare.com/wallpaper/5/114/492/animals-artwork-birds-digital-art-wallpaper-preview.jpg)](https://www.wallpaperflare.com/animals-artwork-birds-digital-art-geometry-kingfisher-wallpaper-qtwpj/download)|[![](https://c4.wallpaperflare.com/wallpaper/171/914/407/simple-background-low-poly-vector-artwork-wallpaper-preview.jpg)](https://www.wallpaperflare.com/simple-background-low-poly-vector-artwork-gray-digital-art-wallpaper-uayui/download)|[![](https://c4.wallpaperflare.com/wallpaper/982/754/520/cat-low-poly-black-panther-wallpaper-preview.jpg)](https://www.wallpaperflare.com/cat-low-poly-black-panther-wallpaper-uezmi/download)|[![](https://c4.wallpaperflare.com/wallpaper/704/73/184/the-head-of-dragon-wallpaper-preview.jpg)](https://www.wallpaperflare.com/the-head-of-dragon-art-design-wallpaper-uvyfm/download)|[![](https://c4.wallpaperflare.com/wallpaper/856/255/801/abstract-bird-psychedelic-wallpaper-preview.jpg)](https://www.wallpaperflare.com/abstract-bird-psychedelic-wallpaper-qaedv/download)|[![](https://c4.wallpaperflare.com/wallpaper/33/720/962/low-poly-fox-artist-digital-art-wallpaper-preview.jpg)](https://www.wallpaperflare.com/low-poly-fox-artist-digital-art-hd-copy-space-studio-shot-wallpaper-pkuda/download)|[![](https://c4.wallpaperflare.com/wallpaper/672/717/179/pink-animals-low-poly-adobe-illustrator-wallpaper-preview.jpg)](https://www.wallpaperflare.com/pink-animals-low-poly-adobe-illustrator-lion-digital-art-wallpaper-qorjf/download)|[![](https://c0.wallpaperflare.com/preview/423/748/34/animals-aquatic-animal-fish-koi-fish.jpg)](https://www.wallpaperflare.com/school-of-koi-fish-animals-aquatic-animal-pond-school-of-fish-wallpaper-alxmb/download)|[![](https://c4.wallpaperflare.com/wallpaper/658/532/10/simple-background-animals-black-background-low-poly-wallpaper-preview.jpg)](https://www.wallpaperflare.com/simple-background-animals-black-background-low-poly-digital-art-wallpaper-uouoz/download)|[![](https://c4.wallpaperflare.com/wallpaper/399/750/398/bird-owl-polygonal-low-poly-wallpaper-preview.jpg)](https://www.wallpaperflare.com/bird-owl-polygonal-low-poly-low-poly-art-geometry-wallpaper-cfnnm/download)|
+|[![](https://c4.wallpaperflare.com/wallpaper/994/142/334/parrot-vector-drawing-bright-wallpaper-preview.jpg)](https://www.wallpaperflare.com/pink-and-blue-bird-illustration-parrot-vector-drawing-bright-wallpaper-rlo/download)|[![](https://w0.peakpx.com/wallpaper/644/98/HD-wallpaper-penguin-abstract-penguin-birds-abstract.jpg)](https://www.peakpx.com/es/hd-wallpaper-desktop-kbhru)|[![](https://w0.peakpx.com/wallpaper/483/52/HD-wallpaper-polygon-panda-background-with-panda-polygon-animals-panda-creative-pandas-cute-panda.jpg)](https://www.peakpx.com/es/hd-wallpaper-desktop-kkbwl)|[![](https://e1.pxfuel.com/desktop-wallpaper/645/38/desktop-wallpaper-low-poly-fox-2018-in-polygon-polygonal.jpg)](https://www.pxfuel.com/es/desktop-wallpaper-pqsxj)|
+|[![](https://c4.wallpaperflare.com/wallpaper/556/539/712/science-fiction-digital-art-concept-art-artwork-futuristic-hd-wallpaper-preview.jpg)](https://www.wallpaperflare.com/science-fiction-digital-art-concept-art-artwork-futuristic-wallpaper-gjdbr/download)|[![](https://c4.wallpaperflare.com/wallpaper/623/809/137/anime-anime-girls-simple-background-hololive-virtual-youtuber-hd-wallpaper-preview.jpg)](https://www.wallpaperflare.com/anime-anime-girls-simple-background-hololive-virtual-youtuber-wallpaper-ycruu/download)|[![](https://c4.wallpaperflare.com/wallpaper/762/988/64/wlop-digital-art-drawing-women-wallpaper-preview.jpg)](https://www.wallpaperflare.com/wlop-digital-art-drawing-women-face-ghost-blade-grey-hair-wallpaper-pvihe/download)|[![](https://wallpapercave.com/uwp/uwp3782817.png)](https://wallpapercave.com/w/uwp3782817)|[![](https://c4.wallpaperflare.com/wallpaper/950/396/1004/video-game-arknights-animal-ears-black-hair-red-eyes-hd-wallpaper-preview.jpg)](https://www.wallpaperflare.com/video-game-arknights-animal-ears-black-hair-red-eyes-snow-wallpaper-gitkw/download)|[![](https://c4.wallpaperflare.com/wallpaper/530/872/972/evangelion-neon-genesis-evangelion-evangelion-unit-01-wallpaper-preview.jpg)](https://www.wallpaperflare.com/evangelion-neon-genesis-evangelion-evangelion-unit-01-wallpaper-qsisc/download)|[![](https://c4.wallpaperflare.com/wallpaper/824/325/157/anime-anime-girls-punishing-gray-raven-seymour-science-fiction-hd-wallpaper-preview.jpg)](https://www.wallpaperflare.com/anime-anime-girls-punishing-gray-raven-seymour-science-fiction-wallpaper-ypvxd/download)|[![](https://c4.wallpaperflare.com/wallpaper/291/912/923/haruno-sakura-naruto-anime-naruto-shippuuden-anime-girls-women-hd-wallpaper-preview.jpg)](https://www.wallpaperflare.com/haruno-sakura-naruto-anime-naruto-shippuuden-anime-girls-wallpaper-uitbr/download)|[![](https://c4.wallpaperflare.com/wallpaper/994/660/45/anime-anime-girls-kill-la-kill-matoi-ryuuko-wallpaper-preview.jpg)](https://www.wallpaperflare.com/anime-anime-girls-kill-la-kill-matoi-ryuuko-sexy-anime-wallpaper-qgiqk/download)|[![](https://c4.wallpaperflare.com/wallpaper/268/873/89/ruby-abstract-deviantart-rwby-wallpaper-preview.jpg)](https://www.wallpaperflare.com/red-white-and-black-abstract-painting-ruby-deviantart-rwby-wallpaper-zppb/download)|
+|[![](https://c4.wallpaperflare.com/wallpaper/545/756/905/anime-anime-girls-mask-simple-background-hd-wallpaper-preview.jpg)](https://www.wallpaperflare.com/anime-anime-girls-mask-simple-background-wallpaper-gjgrg/download)|[![](https://c4.wallpaperflare.com/wallpaper/267/977/253/anime-anime-girls-picture-in-picture-ayanami-rei-hd-wallpaper-preview.jpg)](https://www.wallpaperflare.com/anime-anime-girls-picture-in-picture-ayanami-rei-wallpaper-ycjnn/download)|[![](https://c4.wallpaperflare.com/wallpaper/222/274/353/anime-manga-anime-girls-fish-wallpaper-preview.jpg)](https://www.wallpaperflare.com/anime-manga-anime-girls-fish-gray-gray-background-simple-background-wallpaper-plkgy/download)|[![](https://c4.wallpaperflare.com/wallpaper/896/207/722/women-dark-hair-purple-eyes-kimono-wallpaper-preview.jpg)](https://www.wallpaperflare.com/women-dark-hair-purple-eyes-kimono-anime-girls-artwork-wallpaper-cuuah/download)|[![](https://c4.wallpaperflare.com/wallpaper/885/751/661/earring-original-characters-guweiz-artwork-wallpaper-preview.jpg)](https://www.wallpaperflare.com/earring-original-characters-guweiz-artwork-face-rain-women-wallpaper-ujxef/download)|[![](https://c4.wallpaperflare.com/wallpaper/478/496/9/anime-anime-girls-original-characters-looking-at-viewer-dark-hair-hd-wallpaper-preview.jpg)](https://www.wallpaperflare.com/anime-anime-girls-original-characters-looking-at-viewer-wallpaper-udvxt/download)|[![](https://c4.wallpaperflare.com/wallpaper/495/776/948/virtual-youtuber-ninomae-ina-nis-hololive-hd-wallpaper-preview.jpg)](https://www.wallpaperflare.com/virtual-youtuber-ninomae-ina-nis-hololive-wallpaper-yesks/download)|[![](https://c4.wallpaperflare.com/wallpaper/754/254/568/science-fiction-digital-art-concept-art-artwork-futuristic-hd-wallpaper-preview.jpg)](https://www.wallpaperflare.com/science-fiction-digital-art-concept-art-artwork-futuristic-wallpaper-gjupj/download)|[![](https://c4.wallpaperflare.com/wallpaper/513/701/228/music-gorillaz-glitch-art-outrun-wallpaper-preview.jpg)](https://www.wallpaperflare.com/music-gorillaz-glitch-art-outrun-retrowave-vaporwave-wallpaper-cwsyh/download)|[![](https://c4.wallpaperflare.com/wallpaper/818/885/163/evangelion-unit-01-neon-genesis-evangelion-robot-mech-eva-unit-01-hd-wallpaper-preview.jpg)](https://www.wallpaperflare.com/evangelion-unit-01-neon-genesis-evangelion-robot-mech-eva-unit-01-wallpaper-ycfki/download)|
+|[![](https://c4.wallpaperflare.com/wallpaper/729/993/256/monochrome-selective-coloring-anime-anime-girls-hd-wallpaper-preview.jpg)](https://www.wallpaperflare.com/monochrome-selective-coloring-anime-anime-girls-wallpaper-ybhqh/download)|[![](https://c4.wallpaperflare.com/wallpaper/177/60/980/anime-my-hero-academia-himiko-toga-wallpaper-preview.jpg)](https://www.wallpaperflare.com/anime-my-hero-academia-himiko-toga-studio-shot-indoors-wallpaper-sxcvk/download)|[![](https://c4.wallpaperflare.com/wallpaper/320/618/337/neon-genesis-evangelion-sailor-moon-darling-in-the-franxx-anime-girls-short-hair-hd-wallpaper-preview.jpg)](https://www.wallpaperflare.com/neon-genesis-evangelion-sailor-moon-darling-in-the-franxx-wallpaper-gjpub/download)|[![](https://c4.wallpaperflare.com/wallpaper/721/39/647/anime-girls-original-characters-concept-art-cyberpunk-cyborg-hd-wallpaper-preview.jpg)](https://www.wallpaperflare.com/anime-girls-original-characters-concept-art-cyberpunk-cyborg-wallpaper-gjffa/download)|[![](https://c4.wallpaperflare.com/wallpaper/459/534/339/anime-original-88-original-character-video-game-wallpaper-preview.jpg)](https://www.wallpaperflare.com/anime-original-88-original-character-video-game-wallpaper-cwfow/download)|[![](https://c4.wallpaperflare.com/wallpaper/139/612/976/anime-manga-anime-girls-simple-background-wallpaper-preview.jpg)](https://www.wallpaperflare.com/pink-haired-female-anime-character-manga-anime-girls-simple-background-wallpaper-shffe/download)|[![](https://c4.wallpaperflare.com/wallpaper/241/265/150/pixiv-fantasia-anime-girls-white-hair-long-hair-red-eyes-hd-wallpaper-preview.jpg)](https://www.wallpaperflare.com/pixiv-fantasia-anime-girls-white-hair-long-hair-red-eyes-wallpaper-gjpjw/download)|[![](https://c4.wallpaperflare.com/wallpaper/678/88/18/archer-natus-original-characters-long-hair-fire-wallpaper-preview.jpg)](https://www.wallpaperflare.com/white-haired-female-anime-character-digital-wallpaper-archer-natus-wallpaper-mwhg/download)|[![](https://c4.wallpaperflare.com/wallpaper/397/52/954/video-game-arknights-amiya-arknights-hd-wallpaper-preview.jpg)](https://www.wallpaperflare.com/video-game-arknights-amiya-arknights-wallpaper-gfihs/download)|[![](https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/a69a3023-4164-4615-9740-1a8cc023412b/dg1hg4o-436fd9fa-7770-40e7-9824-68de08b3853f.png/v1/fill/w_1095,h_730,q_70,strp/00002_564107490_by_lambdadeltaart_dg1hg4o-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9ODU0IiwicGF0aCI6IlwvZlwvYTY5YTMwMjMtNDE2NC00NjE1LTk3NDAtMWE4Y2MwMjM0MTJiXC9kZzFoZzRvLTQzNmZkOWZhLTc3NzAtNDBlNy05ODI0LTY4ZGUwOGIzODUzZi5wbmciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.eI5irZ24fSsITsdrz8JmDIsJcYe9LMNpcblXaK_u08w)](https://www.deviantart.com/lambdadeltaart/art/00002-564107490-969952488)|
+|[![](https://c4.wallpaperflare.com/wallpaper/45/438/560/%E7%84%A6%E8%8C%B6-anime-girls-balloon-long-hair-wallpaper-preview.jpg)](https://www.wallpaperflare.com/%E7%84%A6%E8%8C%B6-anime-girls-balloon-long-hair-built-structure-building-exterior-wallpaper-phumc/download)|[![](https://c4.wallpaperflare.com/wallpaper/674/957/275/anime-anime-girls-fan-art-neon-genesis-evangelion-asuka-langley-soryu-hd-wallpaper-preview.jpg)](https://www.wallpaperflare.com/anime-anime-girls-fan-art-neon-genesis-evangelion-asuka-langley-soryu-wallpaper-yhlge/download)|[![](https://c4.wallpaperflare.com/wallpaper/383/372/907/disharmonica-helly-von-valentine-2b-nier-automata-nier-automata-wallpaper-preview.jpg)](https://www.wallpaperflare.com/character-holding-sword-wallpaper-disharmonica-helly-von-valentine-wallpaper-pqiaw/download)|
+|[![](https://c0.wallpaperflare.com/preview/532/944/890/vintage-grunge-aesthetics-australia.jpg)](https://www.wallpaperflare.com/vintage-grunge-aesthetics-australia-melbourne-sky-tumblr-wallpaper-eylpp/download)|[![](https://c4.wallpaperflare.com/wallpaper/215/436/21/ancient-night-night-sky-starry-wallpaper-preview.jpg)](https://www.wallpaperflare.com/ancient-night-night-sky-starry-mexico-kukulcan-kukulcan-pyramid-wallpaper-ohxp/download)|[![](https://c0.wallpaperflare.com/preview/577/841/153/chichenitza-yucatan-maya-culturamaya.jpg)](https://www.wallpaperflare.com/chichenitza-yucatan-maya-culturamaya-mexicolindoyquerido-wallpaper-emwfb/download)|[![](https://c4.wallpaperflare.com/wallpaper/754/52/53/body-of-water-surrounded-by-snow-filled-rock-formation-wallpaper-preview.jpg)](https://www.wallpaperflare.com/town-beside-body-of-water-during-daytime-moody-fenghuang-phoenix-wallpaper-mrdsj/download)|[![](https://c4.wallpaperflare.com/wallpaper/297/245/125/green-leaf-tree-near-mountains-during-golden-hour-wallpaper-preview.jpg)](https://www.wallpaperflare.com/louvre-pyramid-glass-near-building-during-sungset-city-art-wallpaper-mfmfj/download)|[![manhattan.png](https://i.postimg.cc/QtQ69d0j/manhattan.png)](https://postimg.cc/Ppqb0hg7)|[![](https://c1.wallpaperflare.com/preview/631/100/965/construction-modern-design-building.jpg)](https://www.wallpaperflare.com/low-angle-photography-of-five-red-arch-gateway-construction-wallpaper-zagim/download)|[![](https://c4.wallpaperflare.com/wallpaper/71/151/726/futuristic-artwork-toon-colors-volcano-wallpaper-preview.jpg)](https://www.wallpaperflare.com/futuristic-artwork-toon-colors-volcano-river-fantasy-wallpaper-bqffy/download)|[![](https://c0.wallpaperflare.com/preview/505/300/904/croatia-zagreb-retrowave-retrofuture.jpg)](https://www.wallpaperflare.com/croatia-zagreb-retrowave-retrofuture-retrofuturism-vaporart-wallpaper-ezuza/download)|[![](https://c4.wallpaperflare.com/wallpaper/86/549/159/sword-samurai-digital-art-fan-art-wallpaper-preview.jpg)](https://www.wallpaperflare.com/black-and-white-and-black-guitar-sword-samurai-digital-art-wallpaper-zew/download)|
+|[![](https://c0.wallpaperflare.com/preview/77/749/280/south-korea-daegu-bus-downtown.jpg)](https://www.wallpaperflare.com/south-korea-daegu-bus-downtown-city-cars-transport-skyscrapers-wallpaper-ekvky/download)|[![](https://c4.wallpaperflare.com/wallpaper/838/31/738/red-blue-stairs-vaporwave-wallpaper-preview.jpg)](https://www.wallpaperflare.com/red-blue-stairs-vaporwave-architecture-night-indoors-entrance-wallpaper-tnxew/download)|[![](https://c4.wallpaperflare.com/wallpaper/386/870/483/pixel-art-wallpaper-preview.jpg)](https://www.wallpaperflare.com/pixel-art-wallpaper-bukgn/download)|[![](https://c4.wallpaperflare.com/wallpaper/736/314/323/purple-anime-cherry-trees-shrine-wallpaper-preview.jpg)](https://www.wallpaperflare.com/purple-anime-cherry-trees-shrine-landscape-wallpaper-uvmss/download)|[![](https://c4.wallpaperflare.com/wallpaper/374/183/709/street-stars-artwork-aenami-wallpaper-preview.jpg)](https://www.wallpaperflare.com/street-stars-artwork-aenami-2d-landscape-digital-art-wallpaper-uzwov/download)|
+|[![](https://c4.wallpaperflare.com/wallpaper/108/41/227/linux-unix-simple-minimalism-bash-hd-wallpaper-preview.jpg)](https://www.wallpaperflare.com/linux-unix-simple-minimalism-bash-simple-background-command-lines-wallpaper-yhlwj/download)|[![cpp.png](https://i.postimg.cc/Gt5rNKY7/cpp.png)](https://postimg.cc/rRxvRSfx)|[![](https://c4.wallpaperflare.com/wallpaper/674/729/123/code-elixir-programming-wallpaper-preview.jpg)](https://www.wallpaperflare.com/white-background-with-text-overlay-code-elixir-programming-wallpaper-pbmqx/download)|[![](https://c4.wallpaperflare.com/wallpaper/760/361/288/black-background-fingerprint-minimalism-simple-wallpaper-preview.jpg)](https://www.wallpaperflare.com/black-background-fingerprint-minimalism-simple-simple-background-wallpaper-usvhk/download)|[![](https://c4.wallpaperflare.com/wallpaper/968/536/905/technology-git-hd-wallpaper-preview.jpg)](https://www.wallpaperflare.com/technology-git-wallpaper-ynwmq/download)|[![](https://c4.wallpaperflare.com/wallpaper/288/623/752/technology-asus-rog-asus-hd-wallpaper-preview.jpg)](https://www.wallpaperflare.com/technology-asus-rog-wallpaper-gklyk/download)|[![](https://c4.wallpaperflare.com/wallpaper/562/815/793/java-minimalism-programmers-programming-language-cup-hd-wallpaper-preview.jpg)](https://www.wallpaperflare.com/java-minimalism-programmers-programming-language-cup-javascript-wallpaper-gjdyn/download)|[![](https://c4.wallpaperflare.com/wallpaper/966/672/905/javascript-minimalism-wallpaper-preview.jpg)](https://www.wallpaperflare.com/javascript-minimalism-wallpaper-uczoh/download)|[![](https://c4.wallpaperflare.com/wallpaper/504/643/616/node-js-javascript-wallpaper-preview.jpg)](https://www.wallpaperflare.com/black-and-green-text-node-js-javascript-studio-shot-copy-space-wallpaper-mkopa/download)|[![](https://c4.wallpaperflare.com/wallpaper/873/975/781/python-programming-minimalism-grey-technology-hd-wallpaper-preview.jpg)](https://www.wallpaperflare.com/python-programming-minimalism-grey-technology-wallpaper-gjkuo/download)|
+|[![](https://e1.pxfuel.com/desktop-wallpaper/556/915/desktop-wallpaper-how-to-install-reactjs-frontend.jpg)](https://www.pxfuel.com/en/desktop-wallpaper-gwvte)|[![](https://c4.wallpaperflare.com/wallpaper/763/263/663/fedora-29-background-wallpaper-preview.jpg)](https://www.wallpaperflare.com/fedora-29-background-computers-linux-purple-mesh-wallpaper-bgrlw/download)|[![unity.webp](https://i.postimg.cc/ncW4vS0X/unity.webp)](https://postimg.cc/6yd4KcsK)|[![](https://c4.wallpaperflare.com/wallpaper/467/740/1001/programming-gradient-digital-art-vue-hd-wallpaper-preview.jpg)](https://www.wallpaperflare.com/programming-gradient-digital-art-vue-wallpaper-udkaq/download)
+|[![](https://c4.wallpaperflare.com/wallpaper/866/377/85/science-fiction-digital-art-concept-art-artwork-futuristic-hd-wallpaper-preview.jpg)](https://www.wallpaperflare.com/science-fiction-digital-art-concept-art-artwork-futuristic-wallpaper-gjfyh/download)|[![](https://c4.wallpaperflare.com/wallpaper/880/425/148/nixeu-digital-art-fan-art-cyberpunk-cyberpunk-2077-hd-wallpaper-preview.jpg)](https://www.wallpaperflare.com/nixeu-digital-art-fan-art-cyberpunk-cyberpunk-2077-wallpaper-ycexu/download)|[![](https://c4.wallpaperflare.com/wallpaper/113/999/747/nier-white-hair-anime-girls-video-games-wallpaper-preview.jpg)](https://www.wallpaperflare.com/nier-white-hair-anime-girls-video-games-blindfold-nier-automata-wallpaper-qvcju/download)|[![](https://c4.wallpaperflare.com/wallpaper/910/755/612/black-panther-digital-art-wallpaper-preview.jpg)](https://www.wallpaperflare.com/black-panther-digital-art-wallpaper-cxqsv/download)|[![](https://c4.wallpaperflare.com/wallpaper/502/248/938/digital-digital-art-artwork-illustration-drawing-hd-wallpaper-preview.jpg)](https://www.wallpaperflare.com/digital-digital-art-artwork-illustration-drawing-digital-painting-wallpaper-gjgjy/download)|[![](https://c4.wallpaperflare.com/wallpaper/13/282/427/cyberpunk-science-fiction-dark-futuristic-wallpaper-preview.jpg)](https://www.wallpaperflare.com/cyberpunk-science-fiction-dark-futuristic-cyborg-wallpaper-cuvxd/download)|[![](https://c4.wallpaperflare.com/wallpaper/827/65/320/firewatch-4k-best-wallpaper-preview.jpg)](https://www.wallpaperflare.com/firewatch-4k-best-wallpaper-temgv/download)|[![](https://c4.wallpaperflare.com/wallpaper/227/441/94/firewatch-video-game-art-minimalism-simple-hd-wallpaper-preview.jpg)](https://www.wallpaperflare.com/firewatch-video-game-art-minimalism-simple-wallpaper-yshyt/download)|[![](https://c4.wallpaperflare.com/wallpaper/795/1018/423/ghost-of-tsushima-video-games-video-game-art-samurai-hd-wallpaper-preview.jpg)](https://www.wallpaperflare.com/ghost-of-tsushima-video-games-video-game-art-samurai-wallpaper-ytbcl/download)|[![](https://c4.wallpaperflare.com/wallpaper/857/346/531/valorant-jett-valorant-digital-art-artwork-digital-hd-wallpaper-preview.jpg)](https://www.wallpaperflare.com/valorant-jett-valorant-digital-art-artwork-video-games-wallpaper-ytivi/download)|
+|[![](https://c4.wallpaperflare.com/wallpaper/999/556/893/liang-xing-2b-nier-automata-hd-wallpaper-preview.jpg)](https://www.wallpaperflare.com/liang-xing-2b-nier-automata-wallpaper-yciqz/download)|[![](https://c4.wallpaperflare.com/wallpaper/142/751/831/stars-night-fantasy-art-landscape-wallpaper-preview.jpg)](https://www.wallpaperflare.com/stars-night-fantasy-art-landscape-digital-art-sunset-anime-wallpaper-ujobb/download)|[![](https://c4.wallpaperflare.com/wallpaper/553/560/23/ultra-wide-minecraft-video-games-wallpaper-preview.jpg)](https://www.wallpaperflare.com/minecraft-game-application-ultra-wide-video-games-architecture-wallpaper-phnqr/download)|[![](https://c4.wallpaperflare.com/wallpaper/403/855/787/sword-blood-fantasy-armor-wallpaper-preview.jpg)](https://www.wallpaperflare.com/samurai-digital-wallpaper-sword-blood-fantasy-armor-weapon-wallpaper-qenjy/download)|[![](https://c0.wallpaperflare.com/preview/546/793/162/aesthetics-grunge-vintage-retro.jpg)](https://www.wallpaperflare.com/aesthetics-grunge-vintage-retro-tumblr-tree-landscape-wallpaper-eylmv/download)|[![](https://c4.wallpaperflare.com/wallpaper/689/602/472/valorant-riot-games-video-games-digital-hd-wallpaper-preview.jpg)](https://www.wallpaperflare.com/valorant-riot-games-video-games-digital-wallpaper-ythpz/download)|[![](https://e1.pxfuel.com/desktop-wallpaper/372/728/desktop-wallpaper-omen-3840-%C3%97-2160px-valorant-omen-valorant.jpg)](https://www.pxfuel.com/es/desktop-wallpaper-fdjei)|[![](https://c4.wallpaperflare.com/wallpaper/126/116/49/fan-art-s-t-a-l-k-e-r-drawing-warframe-wallpaper-preview.jpg)](https://www.wallpaperflare.com/fan-art-s-t-a-l-k-e-r-drawing-warframe-digital-art-stalker-warframe-wallpaper-ujfhy/download)|[![](https://c4.wallpaperflare.com/wallpaper/520/194/348/ghost-of-tsushima-video-games-video-game-art-digital-art-horse-hd-wallpaper-preview.jpg)](https://www.wallpaperflare.com/ghost-of-tsushima-video-games-video-game-art-digital-art-wallpaper-ytugu/download)|[![](https://n9e5v4d8.ssl.hwcdn.net/images/promo/anniversary/tenyears/masthead-keyart.jpg)](https://www.warframe.com/es/anniversary)|
+|[![](https://c4.wallpaperflare.com/wallpaper/856/87/827/world-of-warcraft-blizzard-entertainment-hd-wallpaper-preview.jpg)](https://www.wallpaperflare.com/world-of-warcraft-blizzard-entertainment-wallpaper-ythhp/download)|
+|[![](https://c4.wallpaperflare.com/wallpaper/152/981/169/colorful-nature-digital-art-landscape-wallpaper-preview.jpg)](https://www.wallpaperflare.com/colorful-nature-digital-art-landscape-trees-forest-artwork-wallpaper-ujhjp/download)|[![](https://c4.wallpaperflare.com/wallpaper/965/695/776/meguro-river-tokyo-japan-blossom-wallpaper-preview.jpg)](https://www.wallpaperflare.com/meguro-river-tokyo-japan-blossom-cherry-blossom-spring-wallpaper-tejuy/download)|[![](https://c4.wallpaperflare.com/wallpaper/522/520/1024/matterhorn-4k-best-ever-wallpaper-preview.jpg)](https://www.wallpaperflare.com/matterhorn-4k-best-ever-wallpaper-tzbzx/download)|[![](https://c4.wallpaperflare.com/wallpaper/801/349/251/digital-art-mountains-cinema-4d-low-poly-wallpaper-preview.jpg)](https://www.wallpaperflare.com/gray-mountain-illustration-grey-mountain-digital-wallpaper-digital-art-wallpaper-qyv/download)|[![](https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/b3be1dae-3caa-4d45-be6c-3de586ba95e2/ddfk819-970f1d4f-6da3-4ccf-8e3f-0264f5e607e6.jpg/v1/fill/w_1192,h_670,q_70,strp/under_the_night_sky_by_bisbiswas_ddfk819-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9OTAwIiwicGF0aCI6IlwvZlwvYjNiZTFkYWUtM2NhYS00ZDQ1LWJlNmMtM2RlNTg2YmE5NWUyXC9kZGZrODE5LTk3MGYxZDRmLTZkYTMtNGNjZi04ZTNmLTAyNjRmNWU2MDdlNi5qcGciLCJ3aWR0aCI6Ijw9MTYwMCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.j8jKTC775V1VR6sxzL7WwpCPAKsRUKPfyJy6VROOy68)](https://www.deviantart.com/bisbiswas/art/Under-the-night-sky-812198061)|[![](https://c4.wallpaperflare.com/wallpaper/42/403/708/artwork-cgi-procedural-minerals-render-wallpaper-preview.jpg)](https://www.wallpaperflare.com/artwork-cgi-procedural-minerals-render-abstract-red-digital-art-wallpaper-urqhc/download)|[![](https://c4.wallpaperflare.com/wallpaper/4/952/989/procedural-minerals-mineral-blue-dark-wallpaper-preview.jpg)](https://www.wallpaperflare.com/blue-stone-fragment-procedural-minerals-dark-abstract-render-wallpaper-ani/download)|[![](https://c4.wallpaperflare.com/wallpaper/544/772/865/red-leaves-mist-lake-water-wallpaper-preview.jpg)](https://www.wallpaperflare.com/red-leaves-mist-lake-water-plants-fall-nature-wallpaper-uravh/download)|[![](https://c4.wallpaperflare.com/wallpaper/124/803/738/dark-leaves-mist-red-leaves-wallpaper-preview.jpg)](https://www.wallpaperflare.com/dark-leaves-mist-red-leaves-trees-forest-landscape-fallen-leaves-wallpaper-upiby/download)|[![](https://c4.wallpaperflare.com/wallpaper/753/721/130/digital-art-jungle-artwork-landscape-wallpaper-preview.jpg)](https://www.wallpaperflare.com/digital-art-jungle-artwork-landscape-wallpaper-uomof/download)|
+|[![](https://c4.wallpaperflare.com/wallpaper/537/859/662/polyscape-forest-digital-art-trees-wallpaper-preview.jpg)](https://www.wallpaperflare.com/polyscape-forest-digital-art-trees-dark-triangle-wallpaper-czjjq/download)|[![](https://c4.wallpaperflare.com/wallpaper/343/56/889/jungle-forest-in-japan-hd-wallpaper-preview.jpg)](https://www.wallpaperflare.com/jungle-forest-in-japan-hd-autumn-janek-sedlar-mao-kurata-nature-wallpaper-uvxsa/download)|[![](https://c4.wallpaperflare.com/wallpaper/730/553/289/galaxy-space-stars-universe-wallpaper-preview.jpg)](https://www.wallpaperflare.com/red-and-black-clouds-digital-wallpaper-galaxy-space-stars-wallpaper-ezn/download)|[![](https://c4.wallpaperflare.com/wallpaper/331/66/547/nature-leaves-water-drops-closeup-wallpaper-preview.jpg)](https://www.wallpaperflare.com/green-leafed-plant-close-up-photography-of-green-leaf-plants-wallpaper-cdz/download)|[![](https://c4.wallpaperflare.com/wallpaper/650/743/736/nature-winter-figure-lake-wallpaper-preview.jpg)](https://www.wallpaperflare.com/nature-winter-figure-lake-snow-forest-serenity-aenami-wallpaper-uesib/download)|[![](https://c4.wallpaperflare.com/wallpaper/386/596/1000/nature-landscape-road-trees-wallpaper-preview.jpg)](https://www.wallpaperflare.com/road-surrounded-with-trees-nature-landscape-car-pine-trees-wallpaper-avi/download)|[![](https://c4.wallpaperflare.com/wallpaper/677/85/307/chinese-characters-vaporwave-birds-forest-wallpaper-preview.jpg)](https://www.wallpaperflare.com/chinese-characters-vaporwave-birds-forest-kanji-wallpaper-ujany/download)|[![](https://c4.wallpaperflare.com/wallpaper/216/846/440/japan-mount-fuji-landscape-wallpaper-preview.jpg)](https://www.wallpaperflare.com/japan-mount-fuji-landscape-wallpaper-uyxxj/download)|[![](https://c4.wallpaperflare.com/wallpaper/849/76/866/mountains-trees-sunset-sky-wallpaper-preview.jpg)](https://www.wallpaperflare.com/green-leafed-tree-mountains-trees-sunset-sky-landscape-trossachs-wallpaper-taql/download)|[![](https://c4.wallpaperflare.com/wallpaper/336/424/959/8-bit-pixel-art-pixels-earth-moon-stars-space-ultra-wide-wallpaper-preview.jpg)](https://www.wallpaperflare.com/8-bit-pixel-art-pixels-earth-moon-stars-space-ultra-wide-planet-space-wallpaper-ttcub/download)|
+|[![](https://c4.wallpaperflare.com/wallpaper/295/109/199/planets-cosmos-space-art-1920x1080-space-planets-hd-art-wallpaper-preview.jpg)](https://www.wallpaperflare.com/planets-cosmos-space-art-1920x1080-space-planets-hd-art-wallpaper-cdlzy/download)|[![](https://c4.wallpaperflare.com/wallpaper/447/952/904/artistic-black-and-white-death-japan-wallpaper-preview.jpg)](https://www.wallpaperflare.com/artistic-black-white-death-japan-kanji-life-wallpaper-tmzjb/download)|[![](https://c4.wallpaperflare.com/wallpaper/750/301/252/sand-black-beach-texture-wallpaper-preview.jpg)](https://www.wallpaperflare.com/sand-black-beach-texture-karekare-new-zealand-wallpaper-cwykz/download)|[![](https://c4.wallpaperflare.com/wallpaper/138/806/436/cinema4d-landscape-nature-abstract-wallpaper-preview.jpg)](https://www.wallpaperflare.com/red-leafed-tree-body-of-water-wallpaper-cinema4d-landscape-wallpaper-bwy/download)|[![](https://c4.wallpaperflare.com/wallpaper/505/296/888/digital-art-cherry-blossom-fantasy-art-lava-wallpaper-preview.jpg)](https://www.wallpaperflare.com/cherry-blossom-tree-near-flowing-lava-digital-wallpaper-digital-art-wallpaper-koh/download)|[![](https://w0.peakpx.com/wallpaper/410/57/HD-wallpaper-sea-island-storm-waves-art-aquarium-underwater-world.jpg)](https://www.peakpx.com/es/hd-wallpaper-desktop-npkje)|
+|[![](https://w0.peakpx.com/wallpaper/366/126/HD-wallpaper-windows.jpg)](https://www.peakpx.com/es/hd-wallpaper-desktop-eejjr)|[![](https://c4.wallpaperflare.com/wallpaper/463/685/261/ubuntu-debian-wallpaper-preview.jpg)](https://www.wallpaperflare.com/ubuntu-debian-wallpaper-tubxf/download)|[![](https://c4.wallpaperflare.com/wallpaper/949/561/310/cyberpunk-2077-samurai-hd-wallpaper-preview.jpg)](https://www.wallpaperflare.com/cyberpunk-2077-samurai-wallpaper-ycypp/download)|[![](https://c4.wallpaperflare.com/wallpaper/347/647/704/gustavo-arteaga-digital-art-fantasy-art-landscape-hd-wallpaper-preview.jpg)](https://www.wallpaperflare.com/gustavo-arteaga-digital-art-fantasy-art-landscape-wallpaper-ybaag/download)|[![](https://c4.wallpaperflare.com/wallpaper/947/708/840/linux-logo-operating-system-opensuse-wallpaper-preview.jpg)](https://www.wallpaperflare.com/linux-logo-operating-system-opensuse-wallpaper-czbyu/download)|[![](https://c4.wallpaperflare.com/wallpaper/721/731/810/nasa-japanese-art-logo-minimalism-modern-hd-wallpaper-preview.jpg)](https://www.wallpaperflare.com/nasa-japanese-art-logo-minimalism-modern-wallpaper-grmrf/download)|[![](https://c4.wallpaperflare.com/wallpaper/940/276/835/manjaro-minimalism-abstract-linux-arch-linux-hd-wallpaper-preview.jpg)](https://www.wallpaperflare.com/manjaro-minimalism-abstract-linux-arch-linux-colorful-wallpaper-yuney/download)|[![](https://c4.wallpaperflare.com/wallpaper/701/152/839/linux-gnu-unix-unixporn-material-minimal-hd-wallpaper-preview.jpg)](https://www.wallpaperflare.com/linux-gnu-unix-unixporn-material-minimal-material-style-wallpaper-yzcpb/download)|[![](https://c4.wallpaperflare.com/wallpaper/589/192/62/gnu-linux-debian-software-wallpaper-preview.jpg)](https://www.wallpaperflare.com/gnu-linux-debian-software-red-no-people-close-up-sunlight-wallpaper-pkuic/download)|[![arch-linux-light-gradient.png](https://i.postimg.cc/c1wgv3mw/arch-linux-light-gradient.png)](https://postimg.cc/Lh467nG8)
+|[![apple.png](https://i.postimg.cc/mkvKzqyf/apple.png)](https://postimg.cc/7JNKjKRm)|[![](https://c1.wallpaperflare.com/preview/411/965/193/mother-board-chip-electronic-electric.jpg)](https://www.wallpaperflare.com/macro-photography-of-black-circuit-board-shallow-focus-photo-of-circuit-board-wallpaper-zchyy/download)|[![](https://c0.wallpaperflare.com/preview/153/380/988/headphones-red-black-dark.jpg)](https://www.wallpaperflare.com/headphones-red-black-dark-gaming-setup-minimal-closeup-wallpaper-elwyw/download)|[![](https://c4.wallpaperflare.com/wallpaper/82/238/385/abstract-digital-art-technology-yellow-wallpaper-preview.jpg)](https://www.wallpaperflare.com/abstract-digital-art-technology-yellow-blue-black-wallpaper-cusrt/download)|[![](https://c4.wallpaperflare.com/wallpaper/205/956/960/vaporwave-vhs-tv-herbarium-wallpaper-preview.jpg)](https://www.wallpaperflare.com/green-leafed-plant-vaporwave-vhs-tv-herbarium-distortion-wallpaper-swvkw/download)|
