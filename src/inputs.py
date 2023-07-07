@@ -44,6 +44,9 @@ keys = [ Key(key[0], key [1], *key[2:]) for key in [
     ([meta], 'End', lazy.spawn('playerctl next')),
     ([meta], 'Prior', lazy.spawn('pactl set-sink-volume @DEFAULT_SINK@ +5%')),
     ([meta], 'Next', lazy.spawn('pactl set-sink-volume @DEFAULT_SINK@ -5%')),
+
+    ([ctrl], 'Escape', lazy.spawn('rofi -show drun -theme gnome')),
+    ([], 'XF86PowerOff', lazy.spawn('zsh .config/rofi/scripts/powermenu.sh')),
     ]
 ]
 
