@@ -6,9 +6,9 @@ Mis archivos de configuración de qtile para una distribución de teclado dvorak
 
 #### Paquetes recomendados
 
-|[Alsa utils](https://archlinux.org/packages/extra/x86_64/alsa-utils/)|[python setproctitle](https://archlinux.org/packages/extra/x86_64/python-setproctitle/)|[ttf-nerd-fonts-symbols](https://archlinux.org/packages/extra/any/ttf-nerd-fonts-symbols/)|
+|[Alsa utils](https://archlinux.org/packages/extra/x86_64/alsa-utils/)|[apple fonts](https://developer.apple.com/fonts/)|[ttf-nerd-fonts-symbols](https://archlinux.org/packages/extra/any/ttf-nerd-fonts-symbols/)|
 |--|--|--|
-|[libpulse](https://archlinux.org/packages/extra/x86_64/libpulse/)|[apple fonts](https://developer.apple.com/fonts/)|[ttf-hack](https://archlinux.org/packages/extra/any/ttf-hack/)|
+|[libpulse](https://archlinux.org/packages/extra/x86_64/libpulse/)|[rofi](https://github.com/adnksharp/Laks-rofi)|[ttf-hack](https://archlinux.org/packages/extra/any/ttf-hack/)|
 |[Picom](https://wiki.archlinux.org/title/Picom)|[playerctl](https://archlinux.org/packages/extra/x86_64/playerctl/)|[alacritty](https://github.com/adnksharp/Laks-alacritty)
 
 ### "Scripts"
@@ -107,6 +107,8 @@ Muestra la primer letra de la distribución de ventanas usada
 |`meta`|`Prior`|aumentar el volumen de salida un 5%|
 |`meta`|`next`|disminuir el volumen de salida un 5%|
 |`control`|`Escape`|lanza el [menú de aplicaciones](https://github.com/adnksharp/Laks-rofi/)|
+|`meta`|`grave`|Muestra la lista de ventantas abiertas|
+|`meta`|`m`|Muestra la lista de [accesos rapidos](https://github.com/davatorium/rofi/blob/next/doc/rofi-script.5.markdown#passing-mode-options) del navegador|
 |` `|[`Power`](https://wiki.archlinux.org/title/Power_management#ACPI_events)|lanza el menú de apagado|
 
 #### Mouse
