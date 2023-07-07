@@ -106,6 +106,8 @@ Muestra la primer letra de la distribución de ventanas usada
 |`meta`|`End`|cambiar al elemento multimedia anterior|
 |`meta`|`Prior`|aumentar el volumen de salida un 5%|
 |`meta`|`next`|disminuir el volumen de salida un 5%|
+|`control`|`Escape`|lanza el [menú de aplicaciones](https://github.com/adnksharp/Laks-rofi/)|
+|` `|[`Power`](https://wiki.archlinux.org/title/Power_management#ACPI_events)|lanza el menú de apagado|
 
 #### Mouse
 |`meta`|`Click derecho`|Cambiar el tamaño de una ventana flotante|
